@@ -43,3 +43,30 @@
 // =============================================================================
 
 
+const readlineSync = require("readline-sync");
+
+function isPrime(value) {
+    if (value < 2) {
+        return false;
+    }
+
+    for (let check = 2; check < value; check++) {
+        if (value % check === 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function main() {
+    let userNumber = readlineSync.questionInt("Enter a number: ");
+
+    if (isPrime(userNumber)) {
+        console.log(userNumber + " is a prime number.");
+    } else {
+        console.log(userNumber + " is NOT a prime number.");
+    }
+}
+
+main();

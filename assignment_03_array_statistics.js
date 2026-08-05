@@ -44,3 +44,66 @@
 // =============================================================================
 
 
+const readlineSync = require("readline-sync");
+
+function findSum(values) {
+    let total = 0;
+
+    for (let i = 0; i < values.length; i++) {
+        total = total + values[i];
+    }
+
+    return total;
+}
+
+function findAverage(values) {
+    let total = findSum(values);
+    return total / values.length;
+}
+
+function findMaximum(values) {
+    let biggest = values[0];
+
+    for (let i = 1; i < values.length; i++) {
+        if (values[i] > biggest) {
+            biggest = values[i];
+        }
+    }
+
+    return biggest;
+}
+
+function findMinimum(values) {
+    let smallest = values[0];
+
+    for (let i = 1; i < values.length; i++) {
+        if (values[i] < smallest) {
+            smallest = values[i];
+        }
+    }
+
+    return smallest;
+}
+
+function main() {
+    let count = readlineSync.questionInt("How many numbers? ");
+
+    if (count <= 0) {
+        console.log("Error: Number of values must be greater than 0.");
+        return;
+    }
+
+    let values = [];
+
+    for (let i = 0; i < count; i++) {
+        values[i] = readlineSync.questionInt("Enter number " + (i + 1) + ": ");
+    }
+
+    console.log("\nResults:");
+    console.log("Sum:     " + findSum(values));
+    console.log("Average: " + findAverage(values));
+    console.log("Maximum: " + findMaximum(values));
+    console.log("Minimum: " + findMinimum(values));
+}
+
+main();
